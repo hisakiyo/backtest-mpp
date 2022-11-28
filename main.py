@@ -29,8 +29,10 @@ for index, row in data.iterrows():
     if row['betA'] == str(row['scoreA']) and row['betB'] == str(row['scoreB']):
         if row['betA'] > row['betB']:
             data.at[index, 'points'] = row['coteA'] * 2
-        else:
+        elif row['betA'] < row['betB']:
             data.at[index, 'points'] = row['coteB'] * 2
+        else:
+            data.at[index, 'points'] = row['coteX'] * 2
     # If scoreA won and we bet on A
     elif row['betA'] > row['betB'] and row['scoreA'] > row['scoreB']:
         data.at[index, 'points'] = row['coteA']
